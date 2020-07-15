@@ -4,8 +4,8 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
 
 app = Flask(__name__)
-app.config["MONGO_DBNAME"] = 'milestone_project'
-app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
+app.config["MONGO_DBNAME"] = "milestone_project"
+app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost")
 
 mongo = PyMongo(app)
 
@@ -17,16 +17,30 @@ def get_games():
                            games=mongo.db.games.find(), consoles=mongo.db.consoles.find())
 
 
-@app.route("/add_review")
-def add_review():
+@app.route("/list_games")
+def list_games():
+    return render_template("games-list.html", games=mongo.db.games.find())
+
+
+@app.route("/game_page")
+def game_page():
+    return render_template("games-page.html", games=mongo.db.games.find(),
+                           images=mongo.db.games.image.find())
+
+
+@app.route("/add_game")
+def add_game():
     return render_template("addreview.html",  consoles=mongo.db.consoles.find(),
-                           genres=mongo.db.genre.find(), scores=mongo.db.score.find())
+                           genres=mongo.db.genre.find(), scores=mongo.db.score.find(),
+                           games=mongo.db.games.find())
 
 
-@app.route('/insert_game', methods=['POST'])
+@app.route("/insert_game", methods=["POST"])
 def insert_game():
     games = mongo.db.games
-    games.insert_one(request.form.to_dict())
+    games.insert_one(
+        {}
+    )
     return redirect(url_for("get_games"))
 
 if __name__ == "__main__":

@@ -1,0 +1,21 @@
+{% extends 'base.html'%} {% block content %}
+
+    {% for game in games %}
+    <div class="row">
+        <h1>{{games.name}}</h1>
+        <div class="row">
+            <div class="col s8">
+                <img src="{{games.image}}" class="game-images" alt="">
+            </div>
+            <div class="col s4">
+                <h4>{{game.console}}</h4>
+                <h4>{{game.genre}}</h4>
+            </div>
+        
+        </div>
+    </div>
+
+    {% endfor %}
+
+
+{% endblock %}
