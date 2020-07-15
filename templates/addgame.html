@@ -1,0 +1,59 @@
+{% extends 'base.html'%} {% block content %}
+    <div class="row">
+        <h1>Adding Game</h1>
+        <div class="col-s5 offset s3">
+            <p>
+                Here you can add games which can be reviewed by you and your peers!
+                Each game has to have a console, genre and will require an image.
+                If you want to adda game fill out the form below!
+            </p>
+        </div>
+        <div class="row">
+        <form action="{{ url_for('insert_game') }}" method="POST" class="col s12">
+            <!----------------------------adding the name of the new game-->
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="What game are you reviewing?" id="name" name="name" type="text" class="validate">
+                    <label for="name">Game Name</label>
+                </div>
+            </div>
+            <!----------------------------adding the genre-->
+            <div class="row">
+                <div class="input-field col s12">
+                    <select id="genre_type" name="genre_type">
+                    <option value="" disabled selected>Choose Genre</option>
+                    {% for genre in genres %}
+                    <option value="{{genre.genre_type}}">{{genre.genre_type}}</option>
+                    {% endfor %}
+                    </select>
+                    <label>Materialize Select</label>
+                </div>
+            </div>
+            <!----------------------------adding the console-->
+            <div class="row">
+                <div class="input-field col s12">
+                    <select id="console" name="console_name">
+                    <option value="" disabled selected>Choose Console</option>
+                    {% for console in consoles %}
+                    <option value="{{console.console_type}}">{{console.console_type}}</option>
+                    {% endfor %}
+                    </select>
+                    <label>Materialize Select</label>
+                </div>
+            </div>
+            <!----------------------------adding the image URL-->
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="We need an image URL" id="image" name="image" type="text" class="validate">
+                    <label for="name">URL for image</label>
+                </div>
+            </div>
+            <!----------------------------submit button-->
+            <button class="btn waves-effect waves-light" type="submit">Add Game</button>
+        </form>
+        </div>
+
+    </div>
+
+
+{% endblock %}
