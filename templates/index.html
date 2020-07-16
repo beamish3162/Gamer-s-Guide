@@ -12,13 +12,15 @@
         <div class="col s4">
             <h4>5 star games</h4>
             {% for game in games %}
-                {% if game.review.0.rating == 5 %}
-                    <ul>
-                      <li> <a href="#">{{game.name}}</a></li>
-                    </ul>
-                
-                {% endif %}
+                {% for review in game.review %}
+                    {% if review.rating == 5 %}
+                        <ul>
+                        <li> <a href="#">{{game.name}}</a></li>
+                        </ul>
+                    
+                    {% endif %}
 
+                {% endfor %}
             {% endfor %}
         </div>
      </div>

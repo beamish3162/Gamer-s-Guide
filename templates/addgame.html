@@ -26,19 +26,19 @@
                     <option value="{{genre.genre_type}}">{{genre.genre_type}}</option>
                     {% endfor %}
                     </select>
-                    <label>Materialize Select</label>
+                    <label>Select Genre</label>
                 </div>
             </div>
             <!----------------------------adding the console-->
             <div class="row">
                 <div class="input-field col s12">
-                    <select id="console" name="console_name">
+                    <select id="console_type" name="console_type">
                     <option value="" disabled selected>Choose Console</option>
                     {% for console in consoles %}
                     <option value="{{console.console_type}}">{{console.console_type}}</option>
                     {% endfor %}
                     </select>
-                    <label>Materialize Select</label>
+                    <label>Select Console</label>
                 </div>
             </div>
             <!----------------------------adding the image URL-->
@@ -46,6 +46,29 @@
                 <div class="input-field col s6">
                     <input placeholder="We need an image URL" id="image" name="image" type="text" class="validate">
                     <label for="name">URL for image</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <textarea placeholder="So Whats the Verdict" name="comments" id="comments" cols="30" rows="100"></textarea>
+                </div>
+            </div>
+            <!----------------------------adding rating for game-->
+            <div class="row">
+                <div class="col s3">
+                    <p>
+                        <label>
+                            <input name="rating" id="rating" type="number" min="0" max="5"/>
+                                <span>rating out of 5</span>
+                        </label>
+                    </p>             
+                </div>
+            </div>
+            <!----------------------------adding reviewer name-->
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="What game are you reviewing?" id="reviewer" name="reviewer" type="text" class="validate">
+                    <label for="name">Your Name</label>
                 </div>
             </div>
             <!----------------------------submit button-->
