@@ -6,8 +6,9 @@
     {% for game in games %}
         <div class="col s4">
             <h4>{{game.name}}</h4>
-            {% for review in game.review %}
+            
            <a href="{{url_for('game_page', game_id=game._id)}}"><img src="{{game.image}}" class="game-images" alt=""></a>
+           {% for review in game.review %}
            <p> Reviewer rating: {{review.rating}}</p>
             {% endfor %}
         </div>

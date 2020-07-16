@@ -35,6 +35,30 @@ def add_game():
                            games=mongo.db.games.find())
 
 
+@app.route("/add_review/<game_id>", methods=["GET"])
+def add_review(game_id):
+    the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
+    return render_template("addreview.html", game=the_game)
+
+
+@app.route("/insert_review/<game_id>", methods=["POST"])
+def insert_review(game_id):
+    game = mongo.db.games
+    reviewer = request.form['reviewer']
+    rating = request.form['rating']
+    comments = request.form['comments']
+
+    game.update(
+        {'_id': ObjectId(game_id)},
+        {"$push" : {"review":{
+            "reviewer": reviewer,
+            "rating": rating,
+            "comments": comments
+    }}}
+    )
+    return redirect(url_for("list_games"))
+
+
 @app.route("/insert_game", methods=["POST"])
 def insert_game():
     games = mongo.db.games
@@ -52,7 +76,7 @@ def insert_game():
         'console_type': console_type,
         'genre_type': genre_type,
         'image': image,
-        'review':[ {
+        'review': [{
             'reviewer': reviewer,
             'rating': rating,
             'comments': comments
@@ -61,14 +85,6 @@ def insert_game():
     }
     games.insert_one(game_form)
     return redirect(url_for("list_games"))
-
-
-@app.route("/add_review")
-def add_review():
-    return render_template("addreview.html", consoles=mongo.db.consoles.find(),
-                           genres=mongo.db.genre.find(), scores=mongo.db.score.find(),
-                           games=mongo.db.games.find())
-
 
 
 if __name__ == "__main__":
