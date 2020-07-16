@@ -21,8 +21,13 @@
                 {% endfor %}
             </article>
             <div class="row">
-                <div class="col s6">
+                <div class="col s4">
+                    <h5>Disagree with whith the review? Write your own here</h5>
                     <a href="{{url_for('add_review', game_id=game._id)}}" class="btn waves-effect waves-light">add your own review to this game!</a>
+                </div>
+                <div class="col s4">
+                    <h5>Any game info incorrect? click here to change</h5>
+                    <a href="{{url_for('edit_game', game_id=game._id)}}" class="btn waves-effect waves-light">Fix information</a>
                 </div>
             </div>
         </div>
