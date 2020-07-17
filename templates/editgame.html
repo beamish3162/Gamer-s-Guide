@@ -5,7 +5,7 @@
 <!-----------------------------------------editting game name-->
         <div class="row">
             <div class="input-field col s6">
-                    <input placeholder="{{game.name}}" value="{{game.name}}" id="name" name="name" type="text" class="validate">
+                    <input placeholder="{{game.name}}" value="{{name}}" id="name" name="name" type="text" class="validate">
                     <label for="name">Game Name</label>
             </div>
          </div>
@@ -13,7 +13,7 @@
         <div class="row">
                 <div class="input-field col s12">
                     <select id="genre_type" name="genre_type">
-                    <option value="{{game.genre_type}}" >{{game.genre_type}}</option>
+                    <option value="{{genre_type}}" >{{game.genre_type}}</option>
                     {% for genre in genres %}
                     <option value="{{genre.genre_type}}">{{genre.genre_type}}</option>
                     {% endfor %}
@@ -25,7 +25,7 @@
         <div class="row">
                 <div class="input-field col s12">
                     <select id="console_type" name="console_type">
-                    <option value="{{game.console_type}}" selected>{{game.console_type}}</option>
+                    <option value="{{console_type}}" selected>{{game.console_type}}</option>
                     {% for console in consoles %}
                     <option value="{{console.console_type}}">{{console.console_type}}</option>
                     {% endfor %}
@@ -36,7 +36,7 @@
 <!-----------------------------------------editting game image-->
         <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="We need an image URL" id="image" name="image" value="{{game.image}}" type="text" class="validate">
+                    <input placeholder="We need an image URL" id="image" name="image" value="{{image}}" type="text" class="validate">
                     <label for="name">URL for image</label>
                 </div>
         </div>

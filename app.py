@@ -95,23 +95,28 @@ def edit_game(game_id):
 
 @app.route("/update_game/<game_id>", methods=["POST"])
 def update_game(game_id):
-    game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
-
-    name = request.form['name']
-    console_type = request.form['console_type']
-    genre_type = request.form['genre_type']
-    image = request.form['image']
-
-    game.update(
-        {"$set": {
-            'name': name,
-            'console_type': console_type,
-            'genre_type': genre_type,
-            'image': image
-            }}
-    )
-
+    games = mongo.db.games
+    games.update( {'_id': ObjectId(game_id)},
+    {
+        'name':request.form.get('name'),
+        'console_type':request.form.get('console_type'),
+        'genre_type': request.form.get('genre_type'),
+        'image': request.form.get('image')
+    })
     return redirect(url_for("list_games"))
+
+
+@app.route('/delete_game/<game_id>')
+def delete_game(game_id):
+    game = mongo.db.games.remove({'_id': ObjectId(game_id)})
+    return redirect(url_for('list_games'))
+
+
+
+
+@app.route("/filter_console")
+def filter_console():
+    return render_template("filterconsole.html")
 
 
 if __name__ == "__main__":
