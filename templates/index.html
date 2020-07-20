@@ -1,21 +1,35 @@
 {% extends 'base.html'%} {% block content %}
-     <h1>Gamer's Guide</h1>
+     <h1 class="page-headers">Gamer's Guide</h1>
      <div class="row">
-        <div class="col s6 offset-s2">
+         <p>Gamer's Guide is a website which allows anyone to review and rate any videogame they 
+         feel like needs judgment passed on it! Anybody can add games, add reviews, edit game 
+         info and even delete games! It is game reviews for the gamer by the gamer created and
+          policed by you the gamer.</p>
+     </div>
+     <div class="row">
+        <div class="col s6 offset-s1">
             <h4>Select by Console</h4>
             {% for console in consoles %}
+            <article class="lists">
             <ul>
-               <li> <a href="#">{{console.console_name}}</a></li>
+            {% if console.console_type == 'ps4' %}
+               <li ><a class="landing-link" href="{{url_for('ps4_console')}}">{{console.console_name}}</a></li>
+            {% elif console.console_type == 'xboxone' %}
+             <li><a class="landing-link" href="{{url_for('xboxone_console')}}">{{console.console_name}}</a></li>
+             {% elif console.console_type == 'pc' %}
+             <li><a class="landing-link" href="{{url_for('pc_console')}}">{{console.console_name}}</a></li>
+             {% endif %}
             </ul>
             {% endfor %}
+            </article>
         </div>
         <div class="col s4">
             <h4>5 star games</h4>
             {% for game in games %}
                 {% for review in game.review %}
                     {% if review.rating == 5 %}
-                        <ul>
-                        <li> <a href="#">{{game.name}}</a></li>
+                        <ul >
+                        <li> <a class="landing-link" href="{{url_for('game_page', game_id=game._id)}}">{{game.name}}</a></li>
                         </ul>
                     
                     {% endif %}

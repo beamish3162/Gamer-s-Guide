@@ -21,23 +21,13 @@ def get_games():
 @app.route("/list_games")
 def list_games():
     games = mongo.db.games.find()
-    reviewAvg = mongo.db.games.aggregate(
-        [
-            {
-                '$group':
-                {
-                    '_id': '$name',
-                    'reviewAvg': {'$avg': '$review{rating}'}
-                }
-            }
-        ]
-    )
-    return render_template("games-list.html", games=games, reviewAvg=reviewAvg)
+    return render_template("games-list.html", games=games)
 
 
 @app.route("/game_page/<game_id>", methods=["GET"])
 def game_page(game_id):
     the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
+    print(the_game)
     return render_template("game-page.html", game=the_game)
 
 
@@ -78,8 +68,8 @@ def insert_game():
 
 @app.route("/add_review/<game_id>", methods=["GET"])
 def add_review(game_id):
-    the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
-    return render_template("addreview.html", game=the_game)
+    game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
+    return render_template("addreview.html", game=game)
 
 
 @app.route("/insert_review/<game_id>", methods=["POST"])
@@ -102,24 +92,24 @@ def insert_review(game_id):
 
 @app.route("/edit_game/<game_id>", methods=["GET"])
 def edit_game(game_id):
-    the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
-    print(the_game)
-    return render_template("editgame.html", game=the_game,
+    game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
+    return render_template("editgame.html", game=game,
                            consoles=mongo.db.consoles.find(),
                            genres=mongo.db.genre.find())
-    
 
 
 @app.route("/update_game/<game_id>", methods=["POST"])
 def update_game(game_id):
     games = mongo.db.games
+    console_type0 = request.form['console_type']
+    console_type1 = request.form['console_type']
+    console_type2 = request.form['console_type']
     games.update({'_id': ObjectId(game_id)},
-                 {'$set':
+                 {'$addToSet':
                  {
-                    'name': request.form.get('name'),
-                    'console_type': request.form.get('console_type'),
-                    'genre_type': request.form.get('genre_type'),
-                    'image': request.form.get('image')
+                     'console_type': {
+                                      [console_type0, console_type1,
+                                       console_type2]},
                  }})
     return redirect(url_for("list_games"))
 
@@ -127,14 +117,27 @@ def update_game(game_id):
 @app.route('/delete_game/<game_id>')
 def delete_game(game_id):
     game = mongo.db.games.remove({'_id': ObjectId(game_id)})
-    return redirect(url_for('list_games'))
+    return redirect(url_for('list_games'), game=game)
 
 
-@app.route("/filter_console")
-def filter_console():
+@app.route("/ps4")
+def ps4_console():
+    return render_template("filterconsole.html",
+                           games=mongo.db.games.find({'console_type': 'PS4'}))
 
-    return render_template("filterconsole.html" )
 
+@app.route("/xboxone")
+def xboxone_console():
+    return render_template("filterconsole.html",
+                           games=mongo.db.games.find
+                           ({'console_type': 'XboxOne'}))
+
+
+@app.route("/pc")
+def pc_console():
+    return render_template("filterconsole.html",
+                           games=mongo.db.games.find
+                           ({'console_type': 'PC'}))
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

@@ -1,3 +1,25 @@
+body {
+    font-family: Ubuntu, sans-serif;
+    color: #fafafa;
+}
+
+.hero-image {
+	position: relative;
+	width: 100%;
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://www.amazingscience.news/wp-content/uploads/2017/07/gaming.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+
+/*----------------------header--------------------*/
+
+.custom-nav {
+    background-color: rgba(27, 26, 26, 0.8);
+}
+
+
 .game-images {
     height: 200px;
     width: 200px;
@@ -8,4 +30,35 @@
     height: 400px;
     width: auto;
     border-radius: 10px;
+}
+
+/*----------------------------landing page----*/
+
+.landing-link {
+    font-size: 20px;
+    color: #fafafa;
+    text-decoration: none;
+}
+
+.landing-link:hover {
+    border: 3px dotted #fafafa;
+    border-radius: 10px;
+}
+
+.page-headers {
+    text-align: center;
+    border: 3px dotted #fafafa;
+    border-radius: 10px;
+}
+
+/*------------------------------footer------*/
+
+.custom-footer {
+    max-height: 100px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(27, 26, 26, 0.8);
+    
 }

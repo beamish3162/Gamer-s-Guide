@@ -9,7 +9,7 @@
             
            <a href="{{url_for('game_page', game_id=game._id)}}"><img src="{{game.image}}" class="game-images" alt=""></a>
            {% for review in game.review %}
-           <p> Reviewer rating: {{game.avg_rating}}</p>
+           <p> Reviewer rating: {{review.rating}}</p>
             {% endfor %}
         </div>
     {% endfor %}

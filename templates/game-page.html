@@ -8,7 +8,10 @@
                         <img src="{{game.image}}" class="game-page-images" alt="">
                     </div>
                     <div class="col s4">
-                        <h4>Console Games reviewed on: <br>{{game.console_type}}</h4>
+                        <h4>Console Games reviewed on: 
+                        {% for console_type in game.console_type %}
+                        <br>{{console_type}}
+                        {% endfor %}</h4>
                         <h4>Genre for Game: <br> {{game.genre_type}}</h4>
                         
                     </div>
