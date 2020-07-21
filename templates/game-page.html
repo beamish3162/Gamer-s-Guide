@@ -2,18 +2,19 @@
 
         <div class="row">
             <article>
-                <h1>{{game.name}}</h1>
+                <h1 class="page-headers">{{game.name}}</h1>
                 <div class="row">
-                    <div class="col s8">
+                    <div class="col s12 m8">
                         <img src="{{game.image}}" class="game-page-images" alt="">
                     </div>
-                    <div class="col s4">
-                        <h4>Console Games reviewed on:</h4>
+                    <div class="col s12 m4">
+                        <h4>Platform:</h4>
                         {% for console_type in game.console_type %}
                         <ul>
                             <li>{{console_type.one}}</li>
                             <li>{{console_type.two}}</li>
                             <li>{{console_type.three}}</li>
+                            <li>{{console_type.four}}</li>
                         </ul>
                         {% endfor %}
                         <h4>Genre for Game:}</h4>

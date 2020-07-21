@@ -15,12 +15,13 @@ mongo = PyMongo(app)
 def get_games():
     return render_template("index.html",
                            games=mongo.db.games.find(),
-                           consoles=mongo.db.consoles.find())
+                           consoles=mongo.db.consoles.find(),
+                           genres=mongo.db.genre.find())
 
 
 @app.route("/list_games")
 def list_games():
-    games = mongo.db.games.find()
+    games = mongo.db.games.find().sort('name')
     return render_template("games-list.html", games=games)
 
 
@@ -43,7 +44,10 @@ def insert_game():
     games = mongo.db.games
 
     name = request.form['name']
-    console_type = request.form['console_type']
+    PS4 = request.form["console_type_one"]
+    XboxOne = request.form["console_type_two"]
+    PC = request.form["console_type_three"]
+    Nintendo_Switch = request.form["console_type_four"]
     genre_type = request.form['genre_type']
     image = request.form['image']
     reviewer = request.form['reviewer']
@@ -52,12 +56,17 @@ def insert_game():
 
     game_form = {
         'name': name,
-        'console_type': console_type,
+        'console_type': [{
+            'one': PS4,
+            'two': XboxOne,
+            'three': PC,
+            'four': Nintendo_Switch
+        }],
         'genre_type': genre_type,
         'image': image,
         'review': [{
             'reviewer': reviewer,
-            'rating': rating,
+            'rating': int(rating),
             'comments': comments
         }]
 
@@ -83,7 +92,7 @@ def insert_review(game_id):
         {'_id': ObjectId(game_id)},
         {"$push": {"review": {
             "reviewer": reviewer,
-            "rating": rating,
+            "rating": int(rating),
             "comments": comments
         }}}
     )
@@ -104,11 +113,13 @@ def update_game(game_id):
     PS4 = request.form["console_type_one"]
     XboxOne = request.form["console_type_two"]
     PC = request.form["console_type_three"]
+    Nintendo_Switch = request.form["console_type_four"]
     games.update({'_id': ObjectId(game_id)},
                  {'$set': {'console_type': [{
                          "one": PS4,
                          "two": XboxOne,
-                         "three": PC
+                         "three": PC,
+                         "four": Nintendo_Switch
                      }],
                  }})
     return redirect(url_for("list_games"))
@@ -120,27 +131,46 @@ def delete_game(game_id):
     return redirect(url_for('list_games'), game=game)
 
 
-@app.route("/ps4")
-def ps4_console():
-    return render_template("filterconsole.html",
-                           games=mongo.db.games.find({"console_type":
-                                                     ["one" == {
-                                                         "PS4"
-                                                     }]}))
+@app.route("/sport")
+def sport_genre():
+    return render_template("filtergenre.html",
+                           games=mongo.db.games.find({'genre_type': 'Sport'}))
 
 
-@app.route("/xboxone")
-def xboxone_console():
-    return render_template("filterconsole.html",
+@app.route("/FPS_genre")
+def FPS_genre():
+    return render_template("filtergenre.html",
                            games=mongo.db.games.find
-                           ({'console_type': 'XboxOne'}))
+                           ({'genre_type': 'First Person Shooter'}))
 
 
-@app.route("/pc")
-def pc_console():
-    return render_template("filterconsole.html",
+@app.route("/strategy_genre")
+def strategy_genre():
+    return render_template("filtergenre.html",
                            games=mongo.db.games.find
-                           ({'console_type': 'PC'}))
+                           ({'genre_type': 'Strategy'}))
+
+
+@app.route("/a_a_genre")
+def a_a_genre():
+    return render_template("filtergenre.html",
+                           games=mongo.db.games.find
+                           ({'genre_type': 'Action and Adventure'}))
+
+
+@app.route("/other_genre")
+def other_genre():
+    return render_template("filtergenre.html",
+                           games=mongo.db.games.find
+                           ({'genre_type': 'Other'}))
+
+
+@app.route("/racing_genre")
+def racing_genre():
+    return render_template("filtergenre.html",
+                           games=mongo.db.games.find
+                           ({'genre_type': 'Racing'}))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

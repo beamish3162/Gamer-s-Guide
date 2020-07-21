@@ -1,75 +1,98 @@
 {% extends 'base.html'%} {% block content %}
     <div class="row">
-        <h1>Adding Game</h1>
+        <h1 class="page-headers">Adding Game</h1>
         <div class="col-s5 offset s3">
             <p>
                 Here you can add games which can be reviewed by you and your peers!
                 Each game has to have a console, genre and will require an image.
-                If you want to adda game fill out the form below!
+                After that jsut write your review, rate and add your name to become
+                a reviewer for the people!
             </p>
         </div>
         <div class="row">
         <form action="{{ url_for('insert_game') }}" method="POST" class="col s12">
             <!----------------------------adding the name of the new game-->
             <div class="row">
-                <div class="input-field col s6">
-                    <input placeholder="What game are you reviewing?" id="name" name="name" type="text" class="validate">
-                    <label for="name">Game Name</label>
-                </div>
+                <h4>The Game's Name</h4>
+                    <div class="input-field col s6 form-color">
+                        <input placeholder="What game are you reviewing?" id="name" name="name" type="text" class="validate">
+                    </div>
             </div>
             <!----------------------------adding the genre-->
             <div class="row">
-                <div class="input-field col s12">
-                    <select id="genre_type" name="genre_type">
-                    <option value="" disabled selected>Choose Genre</option>
-                    {% for genre in genres %}
-                    <option value="{{genre.genre_type}}">{{genre.genre_type}}</option>
-                    {% endfor %}
-                    </select>
-                    <label>Select Genre</label>
-                </div>
+                <h4>Choose Genre</h4>
+                    <div class="input-field col s12 form-color">
+                        <select id="genre_type" name="genre_type">
+                        <option value=""  disabled selected>Choose Genre</option>
+                        {% for genre in genres %}
+                        <option value="{{genre.genre_type}}">{{genre.genre_type}}</option>
+                        {% endfor %}
+                        </select>
+                        
+                    </div>
             </div>
             <!----------------------------adding the console-->
             <div class="row">
-                <div class="input-field col s12">
-                    <select id="console_type" name="console_type">
-                    <option value="" disabled selected>Choose Console</option>
-                    {% for console in consoles %}
-                    <option value="{{console.console_type}}">{{console.console_type}}</option>
-                    {% endfor %}
-                    </select>
-                    <label>Select Console</label>
-                </div>
+                <h4>Select console</h4>
+                    <div class="input-field col s3 form-color">
+                        <select  id="console_type_one" name="console_type_one">
+                                <option value="PS4">PS4</option>
+                                <option value="Incompatible with PS4">Incompatible with PS4</option>
+                        </select>
+                    </div>
+                    <div class="input-field col s3 push-s3 form-color">
+                        <select id="console_type_two" name="console_type_two">
+                                <option value="XboxOne">XboxOne</option>
+                                <option value="Incompatible with XboxOne">Incompatible with XboxOne</option>
+                        </select>
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="input-field col s3 form-color">
+                        <select id="console_type_three" name="console_type_three">
+                                <option value="PC">PC</option>
+                                <option value="Incompatible with PC">Incompatible with PC</option>
+                        </select>
+                    </div>
+                    <div class="input-field col s3 push-s3 form-color">
+                        <select id="console_type_four" name="console_type_four">
+                                <option value="Nintendo Switch">Nintendo Switch</option>
+                                <option value="Incompatible with Nintendo Switch">Incompatible with Nintendo Switch</option>
+                        </select>
+                    </div>
             </div>
             <!----------------------------adding the image URL-->
             <div class="row">
-                <div class="input-field col s6">
-                    <input placeholder="We need an image URL" id="image" name="image" type="text" class="validate">
-                    <label for="name">URL for image</label>
+                <h4>Url for Image</h4>
+                <p>Just google an image you think represents the game and then open it up in a new tab and copy the url!</p>
+                <div class="input-field col s6 form-color">
+                    <input placeholder="We need an image URL" id="image" name="image" type="text" class="validate">  
                 </div>
             </div>
             <!----------------------------adding the reveiw-->
             <div class="row">
+                <h4>Write the Review Here</h4>
                 <div class="col s12">
-                    <textarea placeholder="So Whats the Verdict" name="comments" id="comments" cols="30" rows="100"></textarea>
+                    <textarea class="form-color" placeholder="So Whats the Verdict" name="comments" id="comments" cols="30" rows="100"></textarea>
                 </div>
             </div>
             <!----------------------------adding rating for game-->
             <div class="row">
-                <div class="col s3">
+                <h4>What's your rating out of 5?</h4>
+                <div class="col s3 form-color">
                     <p>
                         <label>
-                            <input name="rating" id="rating" type="number" min="0" max="5"/>
-                                <span>rating out of 5</span>
+                            <input name="rating" id="rating" type="number" min="0" class="form-color" max="5"/>
                         </label>
                     </p>             
                 </div>
             </div>
             <!----------------------------adding reviewer name-->
             <div class="row">
-                <div class="input-field col s6">
+            <h4>Whats your Name</h4>
+                <div class="input-field col s6 form-color">
                     <input placeholder="What's your name?" id="reviewer" name="reviewer" type="text" class="validate">
-                    <label for="name">Your Name</label>
+                    
                 </div>
             </div>
             <!----------------------------submit button-->

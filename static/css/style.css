@@ -2,13 +2,13 @@ body {
     font-family: Ubuntu, sans-serif;
     color: #fafafa;
     height: 100%;
-    position: relative;
+    position: absolute;
 }
 
 .hero-image {
 	position: relative;
 	width: 100%;
-	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://www.amazingscience.news/wp-content/uploads/2017/07/gaming.jpg");
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url("https://www.amazingscience.news/wp-content/uploads/2017/07/gaming.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
@@ -49,6 +49,7 @@ body {
 }
 
 .page-headers {
+    font-family: Jockey one, sans-serif;
     text-align: center;
     border: 3px dotted #fafafa;
     border-radius: 10px;
@@ -63,13 +64,37 @@ body {
 .form-color {
     color: #fafafa;
     border: 3px dotted #fafafa;
-    background-color: #fafafa;
+    background-color: rgba(255, 232, 232, 0.5);
+    border-radius: 10px;
+}
+
+/*-------------------------------game-list-page------*/
+
+.game-info {
+    font-family: Jockey one, sans-serif;
+    height: 400px;
+    text-align:center;
+}
+
+.image-info {
+    text-align: center;
+    display:block;
+}
+
+.name-buffer {
+    height: 80px;
+}
+
+.game-header {
+    font-family: Jockey one, sans-serif;
+    text-align: center;
 }
 
 /*------------------------------footer------*/
 
 .custom-footer {
     max-height: 100px;
+    position: sticky;
     left: 0;
     bottom: 0;
     width: 100%;
