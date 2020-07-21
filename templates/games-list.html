@@ -3,12 +3,13 @@
     <h1 class="game-header">Games</h1>
 
     <div class="row">
+    <hr>
     {% for game in games %}
         <div class="col s12 m4 l4 game-info">
             <h4 class="name-buffer">{{game.name}}</h4>
             
            <a class="image-info" href="{{url_for('game_page', game_id=game._id)}}"><img src="{{game.image}}" class="game-images" alt="image of {{game.name}}"></a>
-                <!-- <p class="game-info"> Reviewer rating: {{average}}</p> -->
+           <hr>
         </div>
     {% endfor %}
     </div>
