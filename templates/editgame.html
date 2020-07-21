@@ -7,6 +7,9 @@
             <div class="col s6">
                     <h2>{{game.name}}</h2>
             </div>
+            <div class="col s6">
+                    <img src="{{game.image}}" class="game-page-images" alt="{{game.name}}'s image'">
+            </div>
          </div>
 <!-----------------------------------------editting game genre-->
         <div class="row">
@@ -28,7 +31,7 @@
                             <option value="Incompatible with PS4">Incompatible with PS4</option>
                     </select>
                 </div>
-                <div class="input-field col s3 form-color">
+                <div class="input-field col s3 push-s3 form-color">
                     <select id="console_type_two" name="console_type_two">
                             <option value="XboxOne">XboxOne</option>
                             <option value="Incompatible with XboxOne">Incompatible with XboxOne</option>
@@ -42,7 +45,7 @@
                             <option value="Incompatible with PC">Incompatible with PC</option>
                     </select>
                 </div>
-                <div class="input-field col s3 form-color">
+                <div class="input-field col s3 push-s3 form-color">
                     <select id="console_type_four" name="console_type_four">
                             <option value="Nintendo Switch">Nintendo Switch</option>
                             <option value="Incompatible with PC">Incompatible with Nintendo Switch</option>
@@ -51,12 +54,12 @@
         </div>
 <!-----------------------------------------editting game image-->
         <div class="row">
-                <div class="input-field col s6">
-                    <input placeholder="We need an image URL" id="image" name="image" value="{{game.image}}" type="text" class="validate form-color">
-                    <label for="name">URL for image</label>
+            <h4>URL for image</h4>
+                <div class="input-field col s6  form-color">
+                    <input placeholder="We need an image URL" id="image" name="image" value="{{game.image}}" type="text" class="validate">
                 </div>
         </div>
-        <button class="btn waves-effect waves-light" type="submit">Submit Review</button>
+        <button class="btn waves-effect waves-light" type="submit">Edit Details</button>
 </form>
 
 

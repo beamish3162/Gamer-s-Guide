@@ -114,6 +114,8 @@ def update_game(game_id):
     XboxOne = request.form["console_type_two"]
     PC = request.form["console_type_three"]
     Nintendo_Switch = request.form["console_type_four"]
+    genre_type = request.form['genre_type']
+    image = request.form['image']
     games.update({'_id': ObjectId(game_id)},
                  {'$set': {'console_type': [{
                          "one": PS4,
@@ -121,6 +123,8 @@ def update_game(game_id):
                          "three": PC,
                          "four": Nintendo_Switch
                      }],
+                     'genre_type': genre_type,
+                     'image': image
                  }})
     return redirect(url_for("list_games"))
 
