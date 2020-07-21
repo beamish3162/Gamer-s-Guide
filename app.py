@@ -101,15 +101,15 @@ def edit_game(game_id):
 @app.route("/update_game/<game_id>", methods=["POST"])
 def update_game(game_id):
     games = mongo.db.games
-    console_type0 = request.form['console_type']
-    console_type1 = request.form['console_type']
-    console_type2 = request.form['console_type']
+    PS4 = request.form["console_type_one"]
+    XboxOne = request.form["console_type_two"]
+    PC = request.form["console_type_three"]
     games.update({'_id': ObjectId(game_id)},
-                 {'$addToSet':
-                 {
-                     'console_type': {
-                                      [console_type0, console_type1,
-                                       console_type2]},
+                 {'$set': {'console_type': [{
+                         "one": PS4,
+                         "two": XboxOne,
+                         "three": PC
+                     }],
                  }})
     return redirect(url_for("list_games"))
 
@@ -123,7 +123,10 @@ def delete_game(game_id):
 @app.route("/ps4")
 def ps4_console():
     return render_template("filterconsole.html",
-                           games=mongo.db.games.find({'console_type': 'PS4'}))
+                           games=mongo.db.games.find({"console_type":
+                                                     ["one" == {
+                                                         "PS4"
+                                                     }]}))
 
 
 @app.route("/xboxone")

@@ -3,38 +3,48 @@
 <h3>Edit Existing Game</h3>
 <form action="{{ url_for('update_game', game_id=game._id) }}" method="POST" class="col s12">    
 <!-----------------------------------------editting game name-->
-        <div class="row">
+        <div  class="row">
             <div class="col s6">
                     <h2>{{game.name}}</h2>
             </div>
          </div>
 <!-----------------------------------------editting game genre-->
         <div class="row">
-                <div class="input-field col s12">
-                    <select id="genre_type" name="genre_type">
-                    <option value="{{genre_type}}" >{{game.genre_type}}</option>
+            <h4>Select Genre</h4>
+                <div class="input-field col s12 form-color">
+                    <select placeholder="{{game.genre_type}}"  id="genre_type" name="genre_type">
                     {% for genre in genres %}
-                    <option value="{{genre.genre_type}}">{{genre.genre_type}}</option>
+                    <option placeholder="{{game.genre_type}}" class="form-color" value="{{genre.genre_type}}">{{genre.genre_type}}</option>
                     {% endfor %}
                     </select>
-                    <label>Select Genre</label>
                 </div>
         </div>
 <!-----------------------------------------editting game console-->
-        <div class="row">
-            <div class="input-field col s12">
-                <select multiple id="console_type" name="console_type">
-                        <option value="{{console_type}}">PS4</option>
-                        <option value="{{console_type}}">XboxOne</option>
-                        <option value="{{console_type}}">PC</option>
+         <div class="row">
+         <h4>Select console</h4>
+            <div class="input-field col s4 form-color">
+                <select id="console_type_one" name="console_type_one">
+                        <option value="PS4">PS4</option>
+                        <option value="incompatible with PS4">incompatible with PS4</option>
                 </select>
-                <label>Select Console</label>
+            </div>
+            <div class="input-field col s4 form-color">
+                <select id="console_type_two" name="console_type_two">
+                        <option value="XboxOne">XboxOne</option>
+                        <option value="incompatible with XboxOne">incompatible with XboxOne</option>
+                </select>
+            </div>
+            <div class="input-field col s4 form-color">
+                <select id="console_type_three" name="console_type_three">
+                        <option value="PC">PC</option>
+                        <option value="incompatible with PC">incompatible with PC</option>
+                </select>
             </div>
         </div>
 <!-----------------------------------------editting game image-->
         <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="We need an image URL" id="image" name="image" value="{{game.image}}" type="text" class="validate">
+                    <input placeholder="We need an image URL" id="image" name="image" value="{{game.image}}" type="text" class="validate form-color">
                     <label for="name">URL for image</label>
                 </div>
         </div>

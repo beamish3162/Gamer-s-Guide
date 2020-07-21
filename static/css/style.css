@@ -1,6 +1,8 @@
 body {
     font-family: Ubuntu, sans-serif;
     color: #fafafa;
+    height: 100%;
+    position: relative;
 }
 
 .hero-image {
@@ -17,6 +19,7 @@ body {
 
 .custom-nav {
     background-color: rgba(27, 26, 26, 0.8);
+    border-bottom: 2px dotted #fafafa;
 }
 
 
@@ -51,14 +54,26 @@ body {
     border-radius: 10px;
 }
 
+.wrapp {
+    min-height: 100%;
+}
+
+/*------------------------------form page------*/
+
+.form-color {
+    color: #fafafa;
+    border: 3px dotted #fafafa;
+    background-color: #fafafa;
+}
+
 /*------------------------------footer------*/
 
 .custom-footer {
     max-height: 100px;
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: rgba(27, 26, 26, 0.8);
+    border-top: 2px dotted #fafafa;
     
 }
