@@ -27,6 +27,7 @@
             <h4 class="form-headers">Select Genre</h4>
                 <div class="input-field col s12 form-color">
                     <select placeholder="Select Genre"  id="genre_type" name="genre_type">
+                    <option value="" disabled selected>Choose your Genre</option>
                     {% for genre in genres %}
                     <option placeholder="Select Genre" class="form-color" value="{{genre.genre_type}}">{{genre.genre_type}}</option>
                     {% endfor %}
@@ -38,12 +39,14 @@
             <h4 class="form-headers">Select console</h4>
                 <div class="input-field col s3 push-s2 form-color">
                     <select  id="console_type_one" name="console_type_one">
+                            <option value="" disabled selected>PS4?</option>
                             <option value="PS4">PS4</option>
                             <option value="Incompatible with PS4">Incompatible with PS4</option>
                     </select>
                 </div>
                 <div class="input-field col s3 push-s5 form-color">
                     <select id="console_type_two" name="console_type_two">
+                            <option value="" disabled selected>XboxOne?</option>
                             <option value="XboxOne">XboxOne</option>
                             <option value="Incompatible with XboxOne">Incompatible with XboxOne</option>
                     </select>
@@ -52,12 +55,14 @@
          <div class="row">
                 <div class="input-field col s3 push-s2 form-color">
                     <select id="console_type_three" name="console_type_three">
+                            <option value="" disabled selected>PC?</option>
                             <option value="PC">PC</option>
                             <option value="Incompatible with PC">Incompatible with PC</option>
                     </select>
                 </div>
                 <div class="input-field col s3 push-s5 form-color">
                     <select id="console_type_four" name="console_type_four">
+                            <option value="" disabled selected>Nintendo Switch?</option>
                             <option value="Nintendo Switch">Nintendo Switch</option>
                             <option value="Incompatible with PC">Incompatible with Nintendo Switch</option>
                     </select>
@@ -70,7 +75,7 @@
                     <input placeholder="We need an image URL" id="image" name="image" value="{{game.image}}" type="text" class="validate">
                 </div>
         </div>
-        <button class="btn waves-effect waves-light" type="submit">Edit Details</button>
+        <button class="btn waves-effect btn-color" type="submit">Edit Details</button>
 </form>
 
 

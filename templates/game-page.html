@@ -17,31 +17,31 @@
                             <li>{{console_type.four}}</li>
                         </ul>
                         {% endfor %}
-                        <h4>Genre for Game:}</h4>
+                        <h4>Genre for Game:</h4>
                         <p>{{game.genre_type}}</p>
                         
                     </div>
                 </div>
                 
                 {% for review in game.review %}
-                <h3>Reviewed by {{review.reviewer}}</h3>
+                <h3 class="page-headers">Reviewed by {{review.reviewer}}</h3>
                 <p>{{review.comments}}</p>
-                <h4>{{review.reviewer}}'s rating: {{review.rating}} Stars</h4>
+                <h4 class="review-header">{{review.reviewer}}'s rating: {{review.rating}} Stars</h4>
 
                 {% endfor %}
             </article>
             <div class="row">
-                <div class="col s4">
-                    <h5>Disagree with whith the review? Write your own here</h5>
-                    <a href="{{url_for('add_review', game_id=game._id)}}" class="btn waves-effect waves-light">add your own review to this game!</a>
+                <div class="col s12 m4">
+                    <p class="paragraph-font">Disagree with whith the review? Write your own here</p>
+                    <a href="{{url_for('add_review', game_id=game._id)}}" class="btn waves-effect btn-color">add review!</a>
                 </div>
-                <div class="col s4">
-                    <h5>Any game info incorrect? click here to change</h5>
-                    <a href="{{url_for('edit_game', game_id=game._id)}}" class="btn waves-effect waves-light">Fix information</a>
+                <div class="col s12 m4">
+                    <p class="paragraph-font">Any game info incorrect? click here to change</p>
+                    <a href="{{url_for('edit_game', game_id=game._id)}}" class="btn waves-effect btn-color">Fix info</a>
                 </div>
-                <div class="col s4">
-                    <h5>Is the game fictional? Is the information added offensive? click to delete</h5>
-                    <a href="{{url_for('delete_game', game_id=game._id)}}" class="btn waves-effect waves-light">Report game</a>
+                <div class="col s12 m4">
+                    <p class="paragraph-font">Is the game fictional? Is the information added offensive?</p>
+                    <a href="{{url_for('delete_game', game_id=game._id)}}" class="btn waves-effect btn-color">Click to Delete</a>
                 </div>
             </div>
         </div>

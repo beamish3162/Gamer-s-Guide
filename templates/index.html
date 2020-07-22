@@ -7,8 +7,8 @@
           policed by you the gamer.</p>
      </div>
      <div class="row">
-        <div class="col s8">
-            <h4 class="page-headers">Select by Console</h4>
+        <div class="col s12 m8">
+            <h4 class="page-headers">Select by Genre</h4>
             <div class="row">
                 {% for genre in genres %}
                 <div class="col s6">
@@ -35,18 +35,27 @@
                 {% endfor %}
             </div>
             </div>
-        <div class="col s3 offset-s1">
+        <div class="col s11 m3 offset-s1">
             <h4 class="page-headers">5 star games</h4>
             {% for game in games %}
                 {% for review in game.review %}
                     {% if review.rating == 5 %}
-                        <ul >
-                        <li> <a class="landing-link" href="{{url_for('game_page', game_id=game._id)}}">{{game.name}}</a></li>
-                        </ul>                   
+                            <ul >
+                            <li> <a class="landing-link" href="{{url_for('game_page', game_id=game._id)}}">{{game.name}}</a></li> 
+                            </ul>                  
                     {% endif %}
                 {% endfor %}
             {% endfor %}
-        </div>
+            <!-- {% set exisitngNames = []%}
+
+            {% for game in games %}
+                {% if game.name is not in exisitngNames %}
+                    <p>{{game.name}}</p>
+
+                    {% set exisitngNames = exisitngNames.append([game.name]) %}
+                {% endif %}
+            {% endfor %} -->
      </div>
+    </div>
 
 {% endblock %}

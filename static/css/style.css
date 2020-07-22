@@ -104,7 +104,7 @@ body {
     text-align: center;
 }
 
-/*-----------------------------editting page-----*/
+/*-----------------------------fonts and sizes-----*/
 .editing-font {
     font-family: Jockey one, sans-serif;
     text-align: center;
@@ -114,6 +114,37 @@ body {
     font-family: Ubuntu, sans-serif;
     font-size: 20px;
     font-weight: 600;
+}
+
+.btn-font {
+    font-family: Jockey one, sans-serif;
+    text-align: center;
+    font-size: 40px;
+}
+
+/*--------------------------------button --------*/
+
+.btn-color {
+    color: #fafafa;
+    border: 3px dotted #fafafa;
+    background-color: rgba(255, 232, 232, 0.5);
+    border-radius: 10px;
+    z-index: 0;
+}
+
+.btn-color:hover {
+    border: 3px solid #fafafa;
+    background-color: rgba(255, 232, 232, 0.5);
+}
+
+
+
+/*------------------------------game-page----*/
+
+.review-header {
+    font-family: Jockey one, sans-serif;
+    text-align: center;
+    min-height: 100px;
 }
 
 /*------------------------------footer------*/
