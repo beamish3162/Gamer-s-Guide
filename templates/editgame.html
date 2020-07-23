@@ -11,10 +11,21 @@
                     <hr>
                     {% for console_type in game.console_type %}
                     <h4 class="editing-font">Current Console Info</h4>
-                    <p class="paragraph-font">{{console_type.one}}</p>
-                    <p class="paragraph-font">{{console_type.two}}</p>
-                    <p class="paragraph-font">{{console_type.three}}</p>
-                    <p class="paragraph-font">{{console_type.four}}</p>
+                        {% if console_type.one == "PS4"%}
+                            <p class="paragraph-font">{{console_type.one}}</p>
+                        {% else %}
+                        {% endif %}
+                        {% if console_type.two == "XboxOne"%}
+                            <p class="paragraph-font">{{console_type.two}}</p>
+                        {% else %}
+                        {% endif %}
+                        {% if console_type.three == "PC"%}
+                            <p class="paragraph-font">{{console_type.three}}</p>
+                        {% else %}
+                        {% endif %}
+                        {% if console_type.four == "Nintendo Switch"%}
+                            <p class="paragraph-font">{{console_type.four}}</p>
+                        {% endif %}
                     {% endfor %}
             </div>
             <div class="col s12 m6">
@@ -39,14 +50,14 @@
             <h4 class="form-headers">Select console</h4>
                 <div class="input-field col s3 push-s2 form-color">
                     <select  id="console_type_one" name="console_type_one">
-                            <option value="" disabled selected>PS4?</option>
+                            <option value="wrong">PS4?</option>
                             <option value="PS4">PS4</option>
                             <option value="Incompatible with PS4">Incompatible with PS4</option>
                     </select>
                 </div>
                 <div class="input-field col s3 push-s5 form-color">
                     <select id="console_type_two" name="console_type_two">
-                            <option value="" disabled selected>XboxOne?</option>
+                            <option value="wrong">XboxOne?</option>
                             <option value="XboxOne">XboxOne</option>
                             <option value="Incompatible with XboxOne">Incompatible with XboxOne</option>
                     </select>
@@ -55,16 +66,16 @@
          <div class="row">
                 <div class="input-field col s3 push-s2 form-color">
                     <select id="console_type_three" name="console_type_three">
-                            <option value="" disabled selected>PC?</option>
+                            <option value="wrong">PC?</option>
                             <option value="PC">PC</option>
                             <option value="Incompatible with PC">Incompatible with PC</option>
                     </select>
                 </div>
                 <div class="input-field col s3 push-s5 form-color">
                     <select id="console_type_four" name="console_type_four">
-                            <option value="" disabled selected>Nintendo Switch?</option>
+                            <option value="wrong">Nintendo Switch?</option>
                             <option value="Nintendo Switch">Nintendo Switch</option>
-                            <option value="Incompatible with PC">Incompatible with Nintendo Switch</option>
+                            <option value="Incompatible with Nintendo Switch">Incompatible with Nintendo Switch</option>
                     </select>
                 </div>
         </div>

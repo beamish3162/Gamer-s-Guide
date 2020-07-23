@@ -11,10 +11,22 @@
                         <h4>Platform:</h4>
                         {% for console_type in game.console_type %}
                         <ul>
-                            <li>{{console_type.one}}</li>
-                            <li>{{console_type.two}}</li>
-                            <li>{{console_type.three}}</li>
-                            <li>{{console_type.four}}</li>
+                            {% if console_type.one == "PS4"%}
+                                <li>{{console_type.one}}</li>
+                            {% else %}
+                            {% endif %}
+                            {% if console_type.two == "XboxOne"%}
+                                <li>{{console_type.two}}</li>
+                            {% else %}
+                            {% endif %}
+                            {% if console_type.three == "PC"%}
+                                <li>{{console_type.three}}</li>
+                            {% else %}
+                            {% endif %}
+                            {% if console_type.four == "Nintendo Switch"%}
+                                <li>{{console_type.four}}</li>
+                            {% else %}
+                            {% endif %}
                         </ul>
                         {% endfor %}
                         <h4>Genre for Game:</h4>

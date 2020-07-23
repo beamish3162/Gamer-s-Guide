@@ -39,10 +39,9 @@ def add_game():
                            games=mongo.db.games.find())
 
 
-@app.route("/insert_game", methods=["POST"])
+@app.route("/insert_game", methods=["POST", "GET"])
 def insert_game():
     games = mongo.db.games
-
     name = request.form['name']
     PS4 = request.form["console_type_one"]
     XboxOne = request.form["console_type_two"]
@@ -69,7 +68,6 @@ def insert_game():
             'rating': int(rating),
             'comments': comments
         }]
-
     }
     games.insert_one(game_form)
     return redirect(url_for("list_games"))
@@ -109,14 +107,24 @@ def edit_game(game_id):
 
 @app.route("/update_game/<game_id>", methods=["POST"])
 def update_game(game_id):
-    games = mongo.db.games
     PS4 = request.form["console_type_one"]
     XboxOne = request.form["console_type_two"]
     PC = request.form["console_type_three"]
     Nintendo_Switch = request.form["console_type_four"]
     genre_type = request.form['genre_type']
     image = request.form['image']
-    games.update({'_id': ObjectId(game_id)},
+
+    if PS4 == "wrong":
+        return redirect(url_for("page_not_found"))
+    elif XboxOne == "wrong":
+        return redirect(url_for("page_not_found"))
+    elif PC == "wrong":
+        return redirect(url_for("page_not_found"))
+    elif Nintendo_Switch == "wrong":
+        return redirect(url_for("page_not_found"))
+    else:
+        games = mongo.db.games
+        games.update({'_id': ObjectId(game_id)},
                  {'$set': {'console_type': [{
                          "one": PS4,
                          "two": XboxOne,
@@ -126,7 +134,7 @@ def update_game(game_id):
                      'genre_type': genre_type,
                      'image': image
                  }})
-    return redirect(url_for("list_games"))
+        return redirect(url_for("list_games"))
 
 
 @app.route('/delete_game/<game_id>')
@@ -174,6 +182,11 @@ def racing_genre():
     return render_template("filtergenre.html",
                            games=mongo.db.games.find
                            ({'genre_type': 'Racing'}))
+
+
+@app.route("/404")
+def page_not_found():
+    return render_template('404.html'), 404
 
 
 if __name__ == "__main__":
