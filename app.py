@@ -125,15 +125,15 @@ def update_game(game_id):
     else:
         games = mongo.db.games
         games.update({'_id': ObjectId(game_id)},
-                 {'$set': {'console_type': [{
-                         "one": PS4,
-                         "two": XboxOne,
-                         "three": PC,
-                         "four": Nintendo_Switch
-                     }],
-                     'genre_type': genre_type,
-                     'image': image
-                 }})
+                     {'$set': {'console_type': [{
+                                "one": PS4,
+                                "two": XboxOne,
+                                "three": PC,
+                                "four": Nintendo_Switch
+                            }],
+                            'genre_type': genre_type,
+                            'image': image
+                     }})
         return redirect(url_for("list_games"))
 
 
@@ -182,6 +182,13 @@ def racing_genre():
     return render_template("filtergenre.html",
                            games=mongo.db.games.find
                            ({'genre_type': 'Racing'}))
+
+
+@app.route("/sandbox_genre")
+def sandbox_genre():
+    return render_template("filtergenre.html",
+                           games=mongo.db.games.find
+                           ({'genre_type': 'Sandbox'}))
 
 
 @app.route("/404")

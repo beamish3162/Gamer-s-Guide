@@ -7,7 +7,7 @@
           policed by you the gamer.</p>
      </div>
      <div class="row">
-     <!----------------------------------showing the genre's for a way of searching for games-->
+     <!---showing the genre's for a way of searching for games-->
         <div class="col s12 m8">
             <h4 class="page-headers">Select by Genre</h4>
             <div class="row">
@@ -38,7 +38,7 @@
                 {% endfor %}
             </div>
             </div>
-        <!------------------------------------looking at 5 star reviewed games-->
+        <!---looking at 5 star reviewed games-->
         <div class="col s11 m3 offset-s1">
             <h4 class="page-headers">5 star games</h4>
             {% for game in games %}
@@ -50,15 +50,6 @@
                     {% endif %}
                 {% endfor %}
             {% endfor %}
-            <!-- {% set exisitngNames = []%}
-
-            {% for game in games %}
-                {% if game.name is not in exisitngNames %}
-                    <p>{{game.name}}</p>
-
-                    {% set exisitngNames = exisitngNames.append([game.name]) %}
-                {% endif %}
-            {% endfor %} -->
      </div>
     </div>
 

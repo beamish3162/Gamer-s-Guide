@@ -11,14 +11,14 @@
         </div>
         <div class="row">
         <form action="{{ url_for('insert_game') }}" method="POST" class="col s12">
-            <!----------------------------adding the name of the new game-->
+            <!----adding the name of the new game-->
             <div class="row">
                 <h4>The Game's Name</h4>
                 <div class="input-field col s6 form-color">
                     <input placeholder="What game are you reviewing?" value="" id="name" name="name" type="text" class="validate">
                 </div>
             </div>
-            <!----------------------------adding the genre-->
+            <!----adding the genre-->
             <div class="row">
                 <h4>Choose Genre</h4>
                     <div class="input-field col s12 form-color">
@@ -31,7 +31,7 @@
                         
                     </div>
             </div>
-            <!----------------------------adding the console-->
+            <!----adding the console-->
             <div class="row">
                 <h4>Select console</h4>
                     <div class="input-field col s3 form-color">
@@ -61,7 +61,7 @@
                         </select>
                     </div>
             </div>
-            <!----------------------------adding the image URL-->
+            <!---adding the image URL-->
             <div class="row">
                 <h4>Url for Image</h4>
                 <p>Just google an image you think represents the game and then open it up in a new tab and copy the url!</p>
@@ -69,14 +69,14 @@
                     <input placeholder="We need an image URL" id="image" name="image" type="text" class="validate">  
                 </div>
             </div>
-            <!----------------------------adding the reveiw-->
+            <!---adding the reveiw-->
             <div class="row">
                 <h4>Write the Review Here</h4>
                 <div class="col s12">
                     <textarea class="form-color" placeholder="So Whats the Verdict" name="comments" id="comments" cols="30" rows="100"></textarea>
                 </div>
             </div>
-            <!----------------------------adding rating for game-->
+            <!---adding rating for game-->
             <div class="row">
                 <h4>What's your rating out of 5?</h4>
                 <div class="col s3 form-color">
@@ -87,7 +87,7 @@
                     </p>             
                 </div>
             </div>
-            <!----------------------------adding reviewer name-->
+            <!---adding reviewer name-->
             <div class="row">
             <h4>Whats your Name</h4>
                 <div class="input-field col s6 form-color">
@@ -95,7 +95,7 @@
                     
                 </div>
             </div>
-            <!----------------------------submit button-->
+            <!---submit button-->
             <button class="btn waves-effect btn-color btn-font" type="submit">Add Game</button>
         </form>
         </div>
