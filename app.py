@@ -11,12 +11,17 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-@app.route("/get_games")
+@app.route("/games_guide")
 def get_games():
     return render_template("index.html",
                            games=mongo.db.games.find(),
                            consoles=mongo.db.consoles.find(),
                            genres=mongo.db.genre.find())
+
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template('404.html'), 404
 
 
 @app.route("/list_games")
@@ -53,24 +58,33 @@ def insert_game():
     rating = request.form['rating']
     comments = request.form['comments']
 
-    game_form = {
-        'name': name,
-        'console_type': [{
-            'one': PS4,
-            'two': XboxOne,
-            'three': PC,
-            'four': Nintendo_Switch
-        }],
-        'genre_type': genre_type,
-        'image': image,
-        'review': [{
-            'reviewer': reviewer,
-            'rating': int(rating),
-            'comments': comments
-        }]
-    }
-    games.insert_one(game_form)
-    return redirect(url_for("list_games"))
+    if PS4 == "wrong":
+        return redirect(url_for("wrong_info"))
+    elif XboxOne == "wrong":
+        return redirect(url_for("wrong_info"))
+    elif PC == "wrong":
+        return redirect(url_for("wrong_info"))
+    elif Nintendo_Switch == "wrong":
+        return redirect(url_for("wrong_info"))
+    else:
+        game_form = {
+            'name': name,
+            'console_type': [{
+                'one': PS4,
+                'two': XboxOne,
+                'three': PC,
+                'four': Nintendo_Switch
+            }],
+            'genre_type': genre_type,
+            'image': image,
+            'review': [{
+                'reviewer': reviewer,
+                'rating': int(rating),
+                'comments': comments
+            }]
+        }
+        games.insert_one(game_form)
+        return redirect(url_for("list_games"))
 
 
 @app.route("/add_review/<game_id>", methods=["GET"])
@@ -115,13 +129,13 @@ def update_game(game_id):
     image = request.form['image']
 
     if PS4 == "wrong":
-        return redirect(url_for("page_not_found"))
+        return redirect(url_for("wrong_info"))
     elif XboxOne == "wrong":
-        return redirect(url_for("page_not_found"))
+        return redirect(url_for("wrong_info"))
     elif PC == "wrong":
-        return redirect(url_for("page_not_found"))
+        return redirect(url_for("wrong_info"))
     elif Nintendo_Switch == "wrong":
-        return redirect(url_for("page_not_found"))
+        return redirect(url_for("wrong_info"))
     else:
         games = mongo.db.games
         games.update({'_id': ObjectId(game_id)},
@@ -191,9 +205,16 @@ def sandbox_genre():
                            ({'genre_type': 'Sandbox'}))
 
 
-@app.route("/404")
-def page_not_found():
-    return render_template('404.html'), 404
+@app.route("/simulation_genre")
+def simulation_genre():
+    return render_template("filtergenre.html",
+                           games=mongo.db.games.find
+                           ({'genre_type': 'Simulation'}))
+
+
+@app.route("/wrong_info")
+def wrong_info():
+    return render_template('wrong.html')
 
 
 if __name__ == "__main__":

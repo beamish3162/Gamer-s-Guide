@@ -3,7 +3,7 @@
 <h3>Write a Review</h3>
 <div class="row">
     <form action="{{ url_for('insert_review', game_id=game._id )}}" method="POST" class="col s12">
-    <!-----------------------------------------choose game to review-->
+    <!---choose game to review-->
         <div class="row">
         <h4>Game under Reveiew</h4>
         <div class="input-field col s12 form-color">
@@ -12,14 +12,14 @@
             </select>
         </div>
     </div>
-    <!-----------------------------------------write the name of reviewer-->
+    <!---write the name of reviewer-->
     <div class="row">
         <h4>Your Name</h4>
         <div class="input-field col s12 form-color">
           <input required id="reviewer" name="reviewer" type="text" class="validate">
         </div>
     </div>
-    <!-----------------------------------------rating-->
+    <!---rating-->
     <div class="row">
         <h4>Rating out of 5</h4>
         <div class="col s3 form-color">
@@ -30,14 +30,14 @@
             </p>             
         </div>
      </div>
-     <!-----------------------------------------review-->
+     <!---review-->
     <div class="row">
         <h4>Write your Review</h4>
         <div class="col s12 form-color">
             <textarea required placeholder="So Whats the Verdict" name="comments" id="comments" cols="30" rows="100"></textarea>
         </div>
       </div>
-      <!-----------------------------------------button-->
+      <!---button-->
         <button class="btn waves-effect btn-color" type="submit">Submit Review</button>
     </form>
   </div>

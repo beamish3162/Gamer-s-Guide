@@ -15,14 +15,14 @@
             <div class="row">
                 <h4>The Game's Name</h4>
                 <div class="input-field col s6 form-color">
-                    <input placeholder="What game are you reviewing?" value="" id="name" name="name" type="text" class="validate">
+                    <input required placeholder="What game are you reviewing?" value="" id="name" name="name" type="text" class="validate">
                 </div>
             </div>
             <!----adding the genre-->
             <div class="row">
                 <h4>Choose Genre</h4>
                     <div class="input-field col s12 form-color">
-                        <select id="genre_type" name="genre_type">
+                        <select id="genre_type" name="genre_type"  required>
                         <option value=""  disabled selected>Choose Genre</option>
                         {% for genre in genres %}
                         <option value="{{genre.genre_type}}">{{genre.genre_type}}</option>
@@ -36,12 +36,14 @@
                 <h4>Select console</h4>
                     <div class="input-field col s3 form-color">
                         <select  id="console_type_one" name="console_type_one">
+                                <option value="wrong">PS4?</option>
                                 <option value="PS4">PS4</option>
                                 <option value="Incompatible with PS4">Incompatible with PS4</option>
                         </select>
                     </div>
                     <div class="input-field col s3 push-s3 form-color">
                         <select id="console_type_two" name="console_type_two">
+                                <option value="wrong">XboxOne?</option>
                                 <option value="XboxOne">XboxOne</option>
                                 <option value="Incompatible with XboxOne">Incompatible with XboxOne</option>
                         </select>
@@ -50,12 +52,14 @@
             <div class="row">
                     <div class="input-field col s3 form-color">
                         <select id="console_type_three" name="console_type_three">
+                                <option value="wrong">PC?</option>
                                 <option value="PC">PC</option>
                                 <option value="Incompatible with PC">Incompatible with PC</option>
                         </select>
                     </div>
                     <div class="input-field col s3 push-s3 form-color">
                         <select id="console_type_four" name="console_type_four">
+                                <option value="wrong">Nintendo Switch?</option>
                                 <option value="Nintendo Switch">Nintendo Switch</option>
                                 <option value="Incompatible with Nintendo Switch">Incompatible with Nintendo Switch</option>
                         </select>
@@ -66,14 +70,14 @@
                 <h4>Url for Image</h4>
                 <p>Just google an image you think represents the game and then open it up in a new tab and copy the url!</p>
                 <div class="input-field col s6 form-color">
-                    <input placeholder="We need an image URL" id="image" name="image" type="text" class="validate">  
+                    <input  required placeholder="We need an image URL" id="image" name="image" type="text" class="validate">  
                 </div>
             </div>
             <!---adding the reveiw-->
             <div class="row">
                 <h4>Write the Review Here</h4>
                 <div class="col s12">
-                    <textarea class="form-color" placeholder="So Whats the Verdict" name="comments" id="comments" cols="30" rows="100"></textarea>
+                    <textarea  required class="form-color" placeholder="So Whats the Verdict" name="comments" id="comments" cols="30" rows="100"></textarea>
                 </div>
             </div>
             <!---adding rating for game-->
@@ -82,7 +86,7 @@
                 <div class="col s3 form-color">
                     <p>
                         <label>
-                            <input name="rating" id="rating" type="number" min="0" class="form-color" max="5"/>
+                            <input  required name="rating" id="rating" type="number" min="0" class="form-color" max="5"/>
                         </label>
                     </p>             
                 </div>
@@ -91,7 +95,7 @@
             <div class="row">
             <h4>Whats your Name</h4>
                 <div class="input-field col s6 form-color">
-                    <input placeholder="What's your name?" id="reviewer" name="reviewer" type="text" class="validate">
+                    <input  required placeholder="What's your name?" id="reviewer" name="reviewer" type="text" class="validate">
                     
                 </div>
             </div>

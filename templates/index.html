@@ -1,14 +1,25 @@
 {% extends 'base.html'%} {% block content %}
      <h1 class="page-headers">Gamer's Guide</h1>
      <div class="row">
-         <p class="paragraph-font">Gamer's Guide is a website which allows anyone to review and rate any videogame they 
+         <p class="paragraph-font landing-paragraph">
+         Gamer's Guide is a website which allows anyone to review and rate any videogame they 
          feel like needs judgment passed on it! Anybody can add games, add reviews, edit game 
          info and even delete games! It is game reviews for the gamer by the gamer created and
-          policed by you the gamer.</p>
+          policed by you the gamer.<br>
+          </p>
+          <h3 class="page-headers">So What's This All About?</h3>
+          <p class="paragraph-font">
+           Below you we have devided the games up into genre types for you to search through, if you would like to add 
+           a game for review you can click the add game in the nav bar or by clicking <a href="{{url_for('add_game')}}">here</a>.
+           <br>If your looking to just browse games you can do so by clicking games on the nav bar or by clicking 
+           <a href="{{url_for('list_games')}}">here</a>. <br>Reviews can be added on the individual game pages aswell as editing 
+           game info which is incorrect and the ability to delete phony games as you see fit. Remember this is your website 
+           as well so respect everybody and police the website like it was your own. Enjoy!
+          </p>
      </div>
      <div class="row">
      <!---showing the genre's for a way of searching for games-->
-        <div class="col s12 m8">
+        <div class="col s12 m8 offset-m2">
             <h4 class="page-headers">Select by Genre</h4>
             <div class="row">
                 {% for genre in genres %}
@@ -32,25 +43,14 @@
                         <li><a class="landing-link" href="{{url_for('other_genre')}}">{{genre.genre_type}}</a></li>
                         {% elif genre.genre_type == 'Racing' %}
                         <li><a class="landing-link" href="{{url_for('racing_genre')}}">{{genre.genre_type}}</a></li>
+                        {% elif genre.genre_type == 'Simulation' %}
+                        <li><a class="landing-link" href="{{url_for('simulation_genre')}}">{{genre.genre_type}}</a></li>
                         {% endif %}
                     </ul> 
                 </div>     
                 {% endfor %}
             </div>
-            </div>
-        <!---looking at 5 star reviewed games-->
-        <div class="col s11 m3 offset-s1">
-            <h4 class="page-headers">5 star games</h4>
-            {% for game in games %}
-                {% for review in game.review %}
-                    {% if review.rating == 5 %}
-                            <ul >
-                            <li> <a class="landing-link" href="{{url_for('game_page', game_id=game._id)}}">{{game.name}}</a></li> 
-                            </ul>                  
-                    {% endif %}
-                {% endfor %}
-            {% endfor %}
-     </div>
+        </div>
     </div>
 
 {% endblock %}

@@ -40,9 +40,11 @@ body {
 /*----------------------------landing page----*/
 
 .landing-link {
+    font-family: Jockey one, sans-serif;
     font-size: 20px;
     color: #fafafa;
     text-decoration: none;
+    text-align: center;
 }
 
 .landing-link:hover {
@@ -59,6 +61,10 @@ body {
 
 .wrapp {
     min-height: 100%;
+}
+
+.landing-paragraph {
+    margin-bottom: 100px;
 }
 
 /*------------------------------form page------*/
@@ -98,7 +104,7 @@ body {
 }
 
 .name-buffer {
-    height: 80px;
+    height: 100px;
 }
 
 .game-header {

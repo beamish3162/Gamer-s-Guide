@@ -2,7 +2,7 @@
 
 <h1 class="page-headers">Edit Existing Game</h1>
 <form action="{{ url_for('update_game', game_id=game._id) }}" method="POST" class="col s12">    
-<!-----------------------------------------editting game name-->
+        <!---editting game name-->
         <div  class="row">
             <div class="col s12 m6">
                     <h4 class="editing-font">{{game.name}}</h4>
@@ -33,11 +33,11 @@
             </div>
          </div>
          <hr>
-<!-----------------------------------------editting game genre-->
+        <!---editting game genre-->
         <div class="row form-display">
             <h4 class="form-headers">Select Genre</h4>
                 <div class="input-field col s12 form-color">
-                    <select placeholder="Select Genre"  id="genre_type" name="genre_type">
+                    <select  required placeholder="Select Genre"  id="genre_type" name="genre_type">
                     <option value="" disabled selected>Choose your Genre</option>
                     {% for genre in genres %}
                     <option placeholder="Select Genre" class="form-color" value="{{genre.genre_type}}">{{genre.genre_type}}</option>
@@ -45,7 +45,7 @@
                     </select>
                 </div>
         </div>
-<!-----------------------------------------editting game console-->
+        <!---editting game console-->
          <div class="row form-display">
             <h4 class="form-headers">Select console</h4>
                 <div class="input-field col s3 push-s2 form-color">
@@ -79,7 +79,7 @@
                     </select>
                 </div>
         </div>
-<!-----------------------------------------editting game image-->
+        <!---editting game image-->
         <div class="row form-display">
             <h4 class="form-headers">URL for image</h4>
                 <div class="input-field col s6  push-s3 form-color">
