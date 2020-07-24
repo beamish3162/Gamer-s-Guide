@@ -153,7 +153,7 @@ def update_game(game_id):
 
 @app.route('/delete_game/<game_id>')
 def delete_game(game_id):
-    game = mongo.db.games.remove({'_id': ObjectId(game_id)})
+    mongo.db.games.remove({'_id': ObjectId(game_id)})
     return redirect(url_for('list_games'))
 
 

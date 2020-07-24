@@ -8,9 +8,7 @@
             <h4 class="name-buffer">{{game.name}}</h4>
             
            <a class="image-info" href="{{url_for('game_page', game_id=game._id)}}"><img src="{{game.image}}" class="game-images" alt=""></a>
-           {% for review in game.review %}
-           <p> Reviewer rating: {{review.rating}}</p>
-            {% endfor %}
+           <p> Number of reveiws {{game.review|length}}</p>
         </div>
     {% endfor %}
     </div>
