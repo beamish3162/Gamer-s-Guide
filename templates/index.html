@@ -21,36 +21,63 @@
      <!---showing the genre's for a way of searching for games-->
         <div class="col s12 m8 offset-m2">
             <h4 class="page-headers">Select by Genre</h4>
-            <div class="row">
-                {% for genre in genres %}
-                <div class="col s6">
-                    <ul>
-                        {% if genre.genre_type == 'Sport' %}
-                        <li ><a class="landing-link" href="{{url_for('sport_genre')}}">{{genre.genre_type}}</a></li>
-                        {% elif genre.genre_type == 'First Person Shooter' %}
-                        <li><a class="landing-link" href="{{url_for('FPS_genre')}}">{{genre.genre_type}}</a></li>
-                        {% elif genre.genre_type == 'Strategy' %}
-                        <li><a class="landing-link" href="{{url_for('strategy_genre')}}">{{genre.genre_type}}</a></li>
-                        {% elif genre.genre_type == 'Sandbox' %}
-                        <li><a class="landing-link" href="{{url_for('sandbox_genre')}}">{{genre.genre_type}}</a></li>
-                    </ul>
-                </div>
-                <div class="col s6">
-                    <ul>
-                        {% elif genre.genre_type == 'Action and Adventure' %}
-                        <li><a class="landing-link" href="{{url_for('a_a_genre')}}">{{genre.genre_type}}</a></li>
-                        {% elif genre.genre_type == 'Other' %}
-                        <li><a class="landing-link" href="{{url_for('other_genre')}}">{{genre.genre_type}}</a></li>
-                        {% elif genre.genre_type == 'Racing' %}
-                        <li><a class="landing-link" href="{{url_for('racing_genre')}}">{{genre.genre_type}}</a></li>
-                        {% elif genre.genre_type == 'Simulation' %}
-                        <li><a class="landing-link" href="{{url_for('simulation_genre')}}">{{genre.genre_type}}</a></li>
-                        {% endif %}
-                    </ul> 
-                </div>     
-                {% endfor %}
-            </div>
+            <p class="paragraph-font">click on the image to filter by genre</p>
+        
         </div>
+    <!--every if statement is for one of oue gerne's which at present totals 8-->
+            <div class="row">
+            {% for genre in genres %}
+                    {% if genre.genre_type == 'Sport' %}
+                    <div class="col s12 m6 l4 game-info">
+                        <h4 class="name-buffer">{{genre.genre_type}}</h4>      
+                        <a class="image-info" href="{{url_for('sport_genre')}}"><img src="{{genre.image}}" class="game-images" alt="image of {{genre.genre_type}}"></a>
+                        <hr>
+                    </div>
+                    {% elif genre.genre_type == 'First Person Shooter' %}
+                    <div class="col s12 m6 l4 game-info">
+                        <h4 class="name-buffer">{{genre.genre_type}}</h4>      
+                        <a class="image-info" href="{{url_for('FPS_genre')}}"><img src="{{genre.image}}" class="game-images" alt="image of {{genre.genre_type}}"></a>
+                        <hr>
+                    </div>
+                    {% elif genre.genre_type == 'Strategy' %}
+                    <div class="col s12 m6 l4 game-info">
+                        <h4 class="name-buffer">{{genre.genre_type}}</h4>      
+                        <a class="image-info" href="{{url_for('strategy_genre')}}"><img src="{{genre.image}}" class="game-images" alt="image of {{genre.genre_type}}"></a>
+                        <hr>
+                    </div>
+                    {% elif genre.genre_type == 'Sandbox' %}
+                    <div class="col s12 m6 l4 game-info">
+                        <h4 class="name-buffer">{{genre.genre_type}}</h4>      
+                        <a class="image-info" href="{{url_for('sandbox_genre')}}"><img src="{{genre.image}}" class="game-images" alt="image of {{genre.genre_type}}"></a>
+                        <hr>
+                    </div>
+                    {% elif genre.genre_type == 'Action and Adventure' %}
+                    <div class="col s12 m6 l4 game-info">
+                        <h4 class="name-buffer">{{genre.genre_type}}</h4>      
+                        <a class="image-info" href="{{url_for('a_a_genre')}}"><img src="{{genre.image}}" class="game-images" alt="image of {{genre.genre_type}}"></a>
+                        <hr>
+                    </div>
+                    {% elif genre.genre_type == 'Other' %}
+                    <div class="col s12 m6 l4 game-info">
+                        <h4 class="name-buffer">{{genre.genre_type}}</h4>      
+                        <a class="image-info" href="{{url_for('other_genre')}}"><img src="{{genre.image}}" class="game-images" alt="image of {{genre.genre_type}}"></a>
+                        <hr>
+                    </div>
+                    {% elif genre.genre_type == 'Racing' %}
+                    <div class="col s12 m6 l4 game-info">
+                        <h4 class="name-buffer">{{genre.genre_type}}</h4>      
+                        <a class="image-info" href="{{url_for('racing_genre')}}"><img src="{{genre.image}}" class="game-images" alt="image of {{genre.genre_type}}"></a>
+                        <hr>
+                    </div>
+                    {% elif genre.genre_type == 'Simulation' %}
+                    <div class="col s12 m6 l4 game-info">
+                        <h4 class="name-buffer">{{genre.genre_type}}</h4>      
+                        <a class="image-info" href="{{url_for('simulation_genre')}}"><img src="{{genre.image}}" class="game-images" alt="image of {{genre.genre_type}}"></a>
+                        <hr>
+                    </div>
+                    {% endif %}
+            {% endfor %}
+            </div>
     </div>
 
 {% endblock %}

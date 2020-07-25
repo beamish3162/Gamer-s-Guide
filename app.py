@@ -19,9 +19,20 @@ def get_games():
                            genres=mongo.db.genre.find())
 
 
+"""
+this is for the 404 page
+"""
+
+
 @app.errorhandler(404)
 def not_found(e):
     return render_template('404.html'), 404
+
+
+"""
+this is for the area where games are sorted alphabetically and the second
+for the page individual games based on their id
+"""
 
 
 @app.route("/list_games")
@@ -35,6 +46,12 @@ def game_page(game_id):
     the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
     print(the_game)
     return render_template("game-page.html", game=the_game)
+
+
+"""
+this is for the Create funciton of the crud, first route for adding
+data second for posting it to the database
+"""
 
 
 @app.route("/add_game")
@@ -87,6 +104,12 @@ def insert_game():
         return redirect(url_for("list_games"))
 
 
+"""
+this is for the add review page based on the games id and the
+second for posting it to the database
+"""
+
+
 @app.route("/add_review/<game_id>", methods=["GET"])
 def add_review(game_id):
     game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
@@ -109,6 +132,12 @@ def insert_review(game_id):
         }}}
     )
     return redirect(url_for("list_games"))
+
+
+"""
+this is for the Updating funciton of the crud, first
+route for the page and the second for posting it to the database
+"""
 
 
 @app.route("/edit_game/<game_id>", methods=["GET"])
@@ -151,10 +180,23 @@ def update_game(game_id):
         return redirect(url_for("list_games"))
 
 
+"""
+this is for the Delete funciton of the crud, for removing info
+from the database
+"""
+
+
 @app.route('/delete_game/<game_id>')
 def delete_game(game_id):
     mongo.db.games.remove({'_id': ObjectId(game_id)})
     return redirect(url_for('list_games'))
+
+
+"""
+the next 8 routes are for the filter page to help create a method of
+searching through the games under review based on teh genre_type
+characteristic of the game data.
+"""
 
 
 @app.route("/sport")
@@ -212,6 +254,11 @@ def simulation_genre():
                            ({'genre_type': 'Simulation'}))
 
 
+"""
+just a page for when info in the forms is incompatible with the database
+"""
+
+
 @app.route("/wrong_info")
 def wrong_info():
     return render_template('wrong.html')
@@ -219,5 +266,5 @@ def wrong_info():
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
-        port=int(os.environ.get("PORT")),
-        debug=True)
+            port=int(os.environ.get("PORT")),
+            debug=True)

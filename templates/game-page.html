@@ -2,6 +2,7 @@
 
         <div class="row">
             <article>
+            <!---presenting game info-->
                 <h1 class="page-headers">{{game.name}}</h1>
                 <div class="row">
                     <div class="col s12 m8">
@@ -42,15 +43,19 @@
 
                 {% endfor %}
             </article>
+            <!--buttons for accessing different features-->
             <div class="row">
+            <!---first the ability to review-->
                 <div class="col s12 m4">
                     <p class="paragraph-font">Disagree with whith the review? Write your own here</p>
                     <a href="{{url_for('add_review', game_id=game._id)}}" class="btn waves-effect btn-color">add review!</a>
                 </div>
+            <!---secondly the abiltiy to edit game info-->
                 <div class="col s12 m4">
                     <p class="paragraph-font">Any game info incorrect? click here to change</p>
                     <a href="{{url_for('edit_game', game_id=game._id)}}" class="btn waves-effect btn-color">Fix info</a>
                 </div>
+            <!---thirdly the abiltiy to delete games form the system-->
                 <div class="col s12 m4">
                     <p class="paragraph-font">Is the game fictional? Is the information added offensive?</p>
                     <a href="{{url_for('delete_game', game_id=game._id)}}" class="btn waves-effect btn-color">Click to Delete</a>

@@ -1,16 +1,15 @@
 {% extends 'base.html'%} {% block content %}
 
     <h1 class="game-header">Games</h1>
-
+    <!---dispalying all games in alphabetical order-->
     <div class="row">
     <hr>
     {% for game in games %}
-        <div class="col s12 m4 l4 game-info">
-            <h4 class="name-buffer">{{game.name}}</h4>
-            
-           <a class="image-info" href="{{url_for('game_page', game_id=game._id)}}"><img src="{{game.image}}" class="game-images" alt="image of {{game.name}}"></a>
-           <p> Number of reveiws {{game.review|length}}</p>
-           <hr>
+        <div class="col s12 m6 l4 game-info">
+            <h4 class="name-buffer">{{game.name}}</h4>      
+            <a class="image-info" href="{{url_for('game_page', game_id=game._id)}}"><img src="{{game.image}}" class="game-images" alt="image of {{game.name}}"></a>
+            <p> Number of reveiws {{game.review|length}}</p>
+            <hr>
         </div>
     {% endfor %}
     </div>

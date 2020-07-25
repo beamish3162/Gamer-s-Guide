@@ -2,16 +2,22 @@
 
 
 <h1 class="page-headers">Sorry broken link 404</h1>
-<div class="row">
-    <div class="col m4">
-        <a class="landing-link" href="{{url_for('get_games')}}">Return Home</a>
+<!---image of broken remote-->
+<div class="image-info">
+<img class="broken" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRQvlchmPBn8_bChJZIdSqFCUVhxeHa14zPaA&usqp=CAU" alt="">
+</div>
+<!---links to get back to key points-->
+<div class="wrong-margins row">
+    <div class="col s12 m4">
+        <a class="wrong-link" href="{{url_for('get_games')}}">Return Home</a>
     </div>
-    <div class="col m4">
-        <a class="landing-link" href="{{url_for('list_games')}}">See Games list again</a>
+    <div class="col s12 m4">
+        <a class="wrong-link" href="{{url_for('list_games')}}">See Games list again</a>
     </div>
-    <div class="col m4">
-        <a type="button" class="landing-link" value="Go back!" onclick="history.back()">Some of that info doesnt check out</a>
+    <div class="col s12 m4">
+        <a type="button" class="wrong-link" value="Go back!" onclick="history.back()">Go back to whence you came!</a>
     </div>
 </div>
+
 
 {% endblock %}
