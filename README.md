@@ -8,7 +8,8 @@ info can be deleted by users. The overall goal of the website is to provide a pl
 
 #User stories
 
-A user would want to add games to the website, they can do that by clicking the add games button on the navbar or in the intext navbar. 
+A user would want to add games to the website, they can do that by clicking the add games button on the navbar or in the intext navbar.
+And then by filling the form out on the add game page.
 
 ## a)
 ![home page](./static/images/landing-page.png)
