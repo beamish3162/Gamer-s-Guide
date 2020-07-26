@@ -155,7 +155,8 @@ down the project so kept the genre_types simple for now.
 
 # Testing
 Display, images and links worked fine on google chrome, firefox and microsoft edge. Used W3 validator for css and html and the pep8.com to check the python was displayed up to standard. 
-On each browser check we tested on mobile view(iphone 6/78), ipad view on both rotations and on general browser view. We had no notable flaws in view. With the W3 validator initially issues such as placeholders in option tags, unnecessary specification of javascript in script tags and comments with too many hyphen’s all of which were resolved. 
+On each browser check we tested on mobile view(iphone 6/78), ipad view on both rotations and on general browser view. Firefox was very slow to load on game-list page had to reload to get all images.
+We had no notable flaws in view. With the W3 validator initially issues such as placeholders in option tags, unnecessary specification of javascript in script tags and comments with too many hyphen’s all of which were resolved. 
 The pep8 test threw up issues such as under-indentation and too many whitespaces once again resolved. 
 
 
