@@ -166,6 +166,21 @@ Once this was done we just committed the project on gitpod with regular git push
 
 # Credits
 
+Most reviews which were entered on the original game enterys came from metric video game review. A link to theri website [here](https://www.metacritic.com/game) 
+
+Some reviews came form google reviews aswell which appears when googling the game. 
+
 # Acknowledgements
+W3s school was leaned on heavily for helping put together this website especially the navbar, button and images positioning and footer positioning. A link to their website is [here](https://www.w3schools.com/default.asp) 
+
+Stack Overflow was also a tool used for info especially sorting out general bugs and gltiches throughout the project [here](https://stackoverflow.com/)
+
+Mongodb documentation was also leaned on heavily on for updating game info in terms of adjusting array info in console_type. A link to the website [here](https://docs.mongodb.com/manual/reference/operator/update/push/)
+
+The Jinja documentation website content was used for filters like length and for putting together the gerne filter search. A link to the website [here](https://jinja.palletsprojects.com/en/2.11.x/)
 
 # media
+ 
+Most images where picked up from their wikipedia for games that where entered but some where off random google searches.
+
+The hero image came from th amazing science news website. 
